@@ -1,0 +1,88 @@
+/* Container styling */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Title */
+.login-container h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form wrapper */
+.form-wrapper {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Table layout */
+table {
+  width: 100%;
+}
+
+td {
+  padding: 10px 5px;
+  vertical-align: top;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #6c63ff;
+  outline: none;
+}
+
+/* Error messages */
+small {
+  color: #e74c3c;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #554de0;
+  transform: scale(1.03);
+}
+
+/* Align submit button row */
+.button-cell {
+  text-align: center;
+  padding-top: 15px;
+}

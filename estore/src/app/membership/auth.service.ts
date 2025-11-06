@@ -6,15 +6,21 @@ export class AuthService {
 
   validate(user: string, password: string): boolean {
    
-    if((user=="rushi.k@transflower.in" && password=="seed")){
-      this.status= true;
+    if((user=="rushi@abc.com" && password=="rushi")){
+      localStorage.setItem('username', user);
+      let status = localStorage.getItem("loggedInStatus");
+      console.log("status of localstorage "+status)
+      if(status=="false"){
+        localStorage.setItem("loggedInStatus","true");
+      }
       return true;
- 
     }
     return false;     
  }
 
- logout(): any {   }
- getUser(): any {   }
- isLoggedIn(): boolean {   return false;  }
+ logout(): any { localStorage.removeItem('username');  }
+getUser(): any { 
+    return localStorage.getItem('username'); 
+  }
+ isLoggedIn(): boolean { return this.getUser() !== null;}
 }

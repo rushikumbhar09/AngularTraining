@@ -3,12 +3,13 @@ import { Item as CartItem } from '../models/Item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart.service';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -20,6 +21,7 @@ export class CartComponent {
 
   ngOnInit(): void {
     this.loadCart();
+    console.log("Component Initiliaze")
   }
 
   loadCart(): void {
@@ -37,14 +39,15 @@ export class CartComponent {
     this.loadCart();
   }
 
-  updateQuantity(item: CartItem, event: any): void {
-  const newQty = +event.target.value; // convert to number
+updateQuantity(item: CartItem, event: any): void {
+  const newQty = +event.target.value;
   if (newQty < 1) {
-    event.target.value = item.quantity; // reset if invalid
+    event.target.value = item.quantity;
     return;
   }
   this.cartService.updateQuantity(item.productId, newQty);
   this.loadCart();
 }
+
 
 }

@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { Customer } from '../models/customer';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
     submitted = false;
+    
   locations = ['Pune','Mumbai','Delhi','Bangalore','Nashik','Chennai'];
   memberShips = [
                  {value:'G',display:'Gold'},
@@ -31,11 +33,11 @@ export class RegisterComponent {
   socialStatus = ['T', 'B'];
 
 
-  model=new Customer('Rushikesh','Kumbhar','rushi.k@transflower.in',798356781,28,
+  model=new Customer('Rushikesh','Kumbhar','rushi.k@abc.com',798356781,28,
                      new Date(1997,9,3),this.locations[0],
                      this.memberShips[1].value,
                      false,this.socialStatus);
-   constructor() {  }
+ constructor(private router: Router) {}
  
  
   onSubmit(form: any): void {
@@ -50,5 +52,8 @@ export class RegisterComponent {
   showFormControls(form:any){
      return form && form.controls['firstName'] && form.controls['firstName'].value;
   }
-
+goToSignIn() {
+    // Example navigation to login page
+    this.router.navigate(['/signin']);
+  }
 }

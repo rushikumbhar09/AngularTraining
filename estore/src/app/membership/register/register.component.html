@@ -1,76 +1,109 @@
-<form #customerForm="ngForm"
-      (ngSubmit)="onSubmit(customerForm.value)">
-            <table>
-            <tr>
-                <td><label>FirstName:</label></td>
-                <input type="text" name="firstName" 
-                       [(ngModel)]="model.firstName"
-                        required minlength="3" maxlength="8"
-                        #firstName="ngModel">
-        
-            </tr>
-                
-            <tr>
-                <td><label>LastName:</label></td>
-                <td><input type="text" name="lastName" 
-                    [(ngModel)]="model.lastName"></td>
-            </tr>
-            <tr><td>
-                  <label>Email:</label></td>
-                  <input type="email" name="email" 
-                         [(ngModel)]="model.email"
-                           required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
-                           #email="ngModel">
+<div class="form-container">
+  <h2>Customer Registration</h2>
 
-            </tr>
-            <tr>
-                <td> <label>BirthDate:</label></td>
-                <td><input type="date" name="birthDate"  required 
-                           [(ngModel)]="model.birthDate"></td>
-            </tr>
-            <tr>
-                <td> <label>Age:</label></td>
-                <td><input type="number" name="age"  required 
-                           [(ngModel)]="model.age"></td>
-            </tr>
-            <tr>
-                <td><label>PhoneNo:</label></td>
-                <td><input type="text" name="phoneNo"  required [(ngModel)]="model.phoneNo"></td>
-            </tr> 
-             <tr>
-                <td><label>Location:</label></td>
-                <select id="location" required [(ngModel)]="model.location"
-                        name="location" #location ="ngModel" >
-                   <option *ngFor="let loc of locations" [value]="loc">{{loc}}</option>
-                </select>
-                <div [hidden]="location.valid || location.pristine">
-                        Location is Required
-                </div>
-            </tr> 
-            <tr>
-                <td><label>Membership:</label></td>
-                <div *ngFor="let memberShip of memberShips">
-                    <label>
-                        <input type="radio" name="memberShip"  required [(ngModel)]="model.memberShip" 
-                               [value]="memberShip.value"> {{memberShip.display}}
-                    </label>
-                </div>
-            </tr>
-            <tr>
-                <td><label>Status</label></td>
-                <input type="checkbox" name="IsRegistered" [(ngModel)]="model.isRegistered"
-                       value='false'>IsRegistered<br>
-            </tr>
-            <tr>
-                <td><label>Source Of Information:</label></td>
-                <select multiple name="social" [(ngModel)]="model.socialStatus">
-                    <option *ngFor="let socialData of social" [value]="socialData.value">
-                        {{socialData.display}}
-                </select>
-            </tr>    
-            <tr>
-              <td><button type="submit" [disabled] = "!customerForm.form.valid"> Submit</button> 
-              </td>
-            </tr>
-      </table>
-    </form>
+  <form *ngIf="!submitted" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm.value)" class="customer-form">
+    <div class="form-group">
+      <label>First Name</label>
+      <input
+        type="text"
+        name="firstName"
+        [(ngModel)]="model.firstName"
+        required
+        minlength="3"
+        maxlength="8"
+        #firstName="ngModel"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" name="lastName" [(ngModel)]="model.lastName" />
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="model.email"
+        required
+        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+        #email="ngModel"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Birth Date</label>
+      <input type="date" name="birthDate" required [(ngModel)]="model.birthDate" />
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" name="age" required [(ngModel)]="model.age" />
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="text" name="phoneNo" required [(ngModel)]="model.phoneNo" />
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      <select required [(ngModel)]="model.location" name="location" #location="ngModel">
+        <option value="" disabled selected>Select your location</option>
+        <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+      </select>
+      <div class="error" [hidden]="location.valid || location.pristine">
+        Location is Required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Membership</label>
+      <div class="radio-group" *ngFor="let memberShip of memberShips">
+        <label>
+          <input
+            type="radio"
+            name="memberShip"
+            required
+            [(ngModel)]="model.memberShip"
+            [value]="memberShip.value"
+          />
+          {{ memberShip.display }}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <label>
+        <input
+          type="checkbox"
+          name="IsRegistered"
+          [(ngModel)]="model.isRegistered"
+          value="false"
+        />
+        Is Registered
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Source Of Information</label>
+      <select multiple name="social" [(ngModel)]="model.socialStatus">
+        <option *ngFor="let socialData of social" [value]="socialData.value">
+          {{ socialData.display }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!customerForm.form.valid">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div class="registerc" *ngIf="submitted">
+<h2>🎉 Registration Successful!</h2>
+    <p>You can now sign in to your account.</p>
+    <button class="signin-btn" (click)="goToSignIn()">Sign In</button>
+</div>
+

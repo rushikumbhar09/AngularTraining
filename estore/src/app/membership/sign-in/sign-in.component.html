@@ -1,27 +1,46 @@
-<div>
+<div class="login-container">
   <h1>Login</h1>
 
-  <div>
+  <div class="form-wrapper">
     <form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm.value)">
       <table>
         <tr>
           <td><label>Email:</label></td>
           <td>
-            <input type="email" name="userEmail" [(ngModel)]="user.email" required
-              pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" #userEmail="ngModel" />
+            <input
+              type="email"
+              name="userEmail"
+              [(ngModel)]="user.email"
+              required
+              pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+              #userEmail="ngModel"
+            />
             <small [hidden]="userEmail.valid || (userEmail.pristine && !loginForm.submitted)">
               Email is Required or Invalid
             </small>
+          </td>
         </tr>
+
         <tr>
           <td><label>Password:</label></td>
-          <input type="password" name="userPassword" [(ngModel)]="user.password" required #userPassword="ngModel" />
-          <small [hidden]="userPassword.valid || (userPassword.pristine && !loginForm.submitted)">
-            Password is Required
-          </small>
+          <td>
+            <input
+              type="password"
+              name="userPassword"
+              [(ngModel)]="user.password"
+              required
+              #userPassword="ngModel"
+            />
+            <small [hidden]="userPassword.valid || (userPassword.pristine && !loginForm.submitted)">
+              Password is Required
+            </small>
+          </td>
         </tr>
+
         <tr>
-          <td><button type="submit"> Submit</button> </td>
+          <td colspan="2" class="button-cell">
+            <button type="submit">Submit</button>
+          </td>
         </tr>
       </table>
     </form>

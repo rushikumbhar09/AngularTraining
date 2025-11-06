@@ -28,6 +28,7 @@ private storageKey = 'shoppingCart';
     }
 
     this.saveCart(cart);
+    console.log(" Saved to cart :: "+sessionStorage.getItem(this.storageKey))
   }
 
   //Get All Cart Items

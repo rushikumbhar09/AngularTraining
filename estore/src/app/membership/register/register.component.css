@@ -1,0 +1,160 @@
+/* 🌈 Background and layout */
+body {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Form container */
+.form-container {
+  max-width: 550px;
+  margin: 60px auto;
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease-in;
+}
+
+/* Header */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #4a47a3;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Inputs and selects */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+input:focus,
+select:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+  outline: none;
+  background: #fff;
+}
+
+/* Radio & Checkbox */
+.radio-group label,
+.checkbox-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: #555;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #6c63ff;
+  transform: scale(1.1);
+}
+
+/* Error message */
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Submit button */
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #6c63ff, #a594f9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Form actions */
+.form-actions {
+  margin-top: 25px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 25px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.registerc {
+    text-align: center;
+    padding: 50px;
+  background-color: #e6ffe6;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.signin-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  background-color: #45a049;
+}
