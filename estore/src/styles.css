@@ -19,3 +19,7 @@ button:hover {
 .text-center {
   text-align: center;
 }
+
+a {
+  cursor: pointer !important;
+}
